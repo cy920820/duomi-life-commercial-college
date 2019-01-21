@@ -1,0 +1,34 @@
+var junkInStr = '[{pid:"123456",tk_price:"0",num_iid:"558805329800",coupon_click_url:"https://1245678.com",coupon_money:"0"},{pid:"123456",tk_price:"0.09",num_iid:"577298675666",coupon_click_url:"https://1245678.com",coupon_money:"0"},{pid:"123456",tk_price:"0",num_iid:"577144619976",coupon_click_url:"https://1245678.com",coupon_money:"10.02"},{pid:"123456",tk_price:"1.09",num_iid:"578947551604",coupon_click_url:"https://1245678.com",coupon_money:"9.02"},{pid:"123456",tk_price:"5.09",num_iid:"577771689900",coupon_click_url:"https://1245678.com",coupon_money:"1.32"}]';
+var junkInData = eval("(" + junkInStr + ")");
+var itemLength = $(".itemv2").length;
+for (var i = 0; i < itemLength; i++) {
+  var itemI = $(".itemv2")[i];
+  var itemIIndex = itemI.getElementsByClassName("item-info")[0].getElementsByTagName("a")[0].getAttribute("href").indexOf("id=");
+  var itemIId = itemI.getElementsByClassName("item-info")[0].getElementsByTagName("a")[0].getAttribute("href").substr(itemIIndex + 3);
+  $.each(junkInData, function (index, item) {
+    if (item.num_iid == itemIId) {
+      if (item.hasclicked == 0) {
+        if ((item.tk_price == "" || item.tk_price == "0" || item.tk_price == undefined) && (item.coupon_money == "0" || item.coupon_money == "" || item.coupon_money == undefined)) {
+          var flBox = '<div class="fl-box" style="width: 100%;padding-left:1.17333rem;padding-right:0.32rem;border-top:0.0133rem solid #e7e7e7;background:#f6f6f6;display:flex;height:1rem;justify-content:space-between;"> <div class="yhj-btn"></div><div class="fl-in" style="line-height:0.6rem;height:0.6rem;margin-top:0.2rem;">此商品暂无返利</div></div>';
+        } else if ((item.tk_price !== "" && item.tk_price !== "0" && item.tk_price !== undefined) && (item.coupon_money == "0" || item.coupon_money == "" || item.coupon_money == undefined)) {
+          var flBox = '<div class="fl-box" style="width: 100%;padding-left:1.17333rem;padding-right:0.32rem;border-top:0.0133rem solid #e7e7e7;background:#f6f6f6;display:flex;height:1rem;justify-content:space-between;"> <div class="yhj-btn"></div><div class="fl-in" style="line-height:0.6rem;height:0.6rem;margin-top:0.2rem;">点击商品下单后  <span style="padding:0.1rem 0.2rem;height:0.6rem;line-height:0.6rem;background:#f50;color:#fff;border-radius:0.1rem;">约返' + item.tk_price + '</span></div></div>';
+        } else if ((item.tk_price == "" || item.tk_price == "0" || item.tk_price == undefined) && (item.coupon_money !== "0" && item.coupon_money !== "" && item.coupon_money !== undefined)) {
+          var flBox = '<div class="fl-box" style="width: 100%;padding-left:1.17333rem;padding-right:0.32rem;border-top:0.0133rem solid #e7e7e7;background:#f6f6f6;display:flex;height:1rem;justify-content:space-between;"> <div class="yhj-btn" style="border:0.015rem solid #f50;background:#fff;border-radius:0.3rem;line-height:0.6rem;height:0.6rem;margin-top:0.2rem;padding: 0 0.2rem;"><a style="color:#f50;" href="' + item.coupon_click_url + '">' + item.coupon_money + '元优惠券</a></div><div class="fl-in" style="line-height:0.6rem;height:0.6rem;margin-top:0.2rem;">领取左侧优惠券，优惠下单</div></div>';
+        } else {
+          var flBox = '<div class="fl-box" style="width: 100%;padding-left:1.17333rem;padding-right:0.32rem;border-top:0.0133rem solid #e7e7e7;background:#f6f6f6;display:flex;height:1rem;justify-content:space-between;"> <div class="yhj-btn" style="border:0.015rem solid #f50;background:#fff;border-radius:0.3rem;line-height:0.6rem;height:0.6rem;margin-top:0.2rem;padding: 0 0.2rem;"><a style="color:#f50;" href="' + item.coupon_click_url + '">' + item.coupon_money + '元优惠券</a></div><div class="fl-in" style="line-height:0.6rem;height:0.6rem;margin-top:0.2rem;">领取左侧优惠券下单后  <span style="padding:0.1rem 0.2rem;height:0.6rem;line-height:0.6rem;background:#f50;color:#fff;border-radius:0.1rem;">约返' + item.tk_price + '</span></div></div>';
+        }
+      } else {
+        if ((item.tk_price == "" || item.tk_price == "0" || item.tk_price == undefined) && (item.coupon_money == "0" || item.coupon_money == "" || item.coupon_money == undefined)) {
+          var flBox = '<div class="fl-box" style="width: 100%;padding-left:1.17333rem;padding-right:0.32rem;border-top:0.0133rem solid #e7e7e7;background:#f6f6f6;display:flex;height:1rem;justify-content:space-between;"> <div class="yhj-btn"></div><div class="fl-in" style="line-height:0.6rem;height:0.6rem;margin-top:0.2rem;">此商品暂无返利</div></div>';
+        } else if ((item.tk_price !== "" && item.tk_price !== "0" && item.tk_price !== undefined) && (item.coupon_money == "0" || item.coupon_money == "" || item.coupon_money == undefined)) {
+          var flBox = '<div class="fl-box" style="width: 100%;padding-left:1.17333rem;padding-right:0.32rem;border-top:0.0133rem solid #e7e7e7;background:#f6f6f6;display:flex;height:1rem;justify-content:space-between;"> <div class="yhj-btn"></div><div class="fl-in" style="line-height:0.6rem;height:0.6rem;margin-top:0.2rem;">点击商品下单后  <span style="padding:0.1rem 0.2rem;height:0.6rem;line-height:0.6rem;background:#f50;color:#fff;border-radius:0.1rem;">约返' + item.tk_price + '</span></div></div>';
+        } else if ((item.tk_price == "" || item.tk_price == "0" || item.tk_price == undefined) && (item.coupon_money !== "0" && item.coupon_money !== "" && item.coupon_money !== undefined)) {
+          var flBox = '<div class="fl-box" style="width: 100%;padding-left:1.17333rem;padding-right:0.32rem;border-top:0.0133rem solid #e7e7e7;background:#f6f6f6;display:flex;height:1rem;justify-content:space-between;"> <div class="yhj-btn" style="border:0.015rem solid #f50;background:#fff;border-radius:0.3rem;line-height:0.6rem;height:0.6rem;margin-top:0.2rem;padding: 0 0.2rem;"><a style="color:#f50;" href="' + item.coupon_click_url + '">' + item.coupon_money + '元优惠券</a></div><div class="fl-in" style="line-height:0.6rem;height:0.6rem;margin-top:0.2rem;">领取左侧优惠券，优惠下单</div></div>';
+        } else {
+          var flBox = '<div class="fl-box" style="width: 100%;padding-left:1.17333rem;padding-right:0.32rem;border-top:0.0133rem solid #e7e7e7;background:#f6f6f6;display:flex;height:1rem;justify-content:space-between;"> <div class="yhj-btn" style="border:0.015rem solid #f50;background:#fff;border-radius:0.3rem;line-height:0.6rem;height:0.6rem;margin-top:0.2rem;padding: 0 0.2rem;"><a style="color:#f50;" href="' + item.coupon_click_url + '">' + item.coupon_money + '元优惠券</a></div><div class="fl-in" style="line-height:0.6rem;height:0.6rem;margin-top:0.2rem;">领取左侧优惠券下单后  <span style="padding:0.1rem 0.2rem;height:0.6rem;line-height:0.6rem;background:#f50;color:#fff;border-radius:0.1rem;">约返' + item.tk_price + '</span></div></div>';
+        }
+      }
+      itemI.innerHTML += flBox;
+    }
+  })
+}
