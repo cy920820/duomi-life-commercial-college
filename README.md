@@ -42,32 +42,29 @@
 ## 开发流程
 
 克隆项目到本地
-```
-git clone git@github.com:Cui-y/gulp-work.git my-project
-cd my-project
-rm -rf .git
+
+```shell
+git clone git@gitee.com:cy920820/duomi-life-commercial-college.git
+cd duomi-life-commercial-college
 ```
 
 安装依赖
 
-> 要求node版本:  ^6.14.0  ||  ^8.10.0  ||  >=9.10.0
+> 要求node版本:  ^6.14.0  ||  ^8.10.0  ||  >=9.10.0 (前提安装node)
 
-```
+```shell
 yarn install
 ```
 
-初始化项目目录
-```
-yarn run init
-```
+本地开发维护
 
-本地开发
-```
+```shell
 yarn start
 ```
 
 语法检查
-```
+
+```shell
 yarn lint --fix
 ```
 
@@ -75,11 +72,12 @@ yarn lint --fix
 
 生产上线前需要使用构建工具进行打包, 打包后的资源会存放在dist目录下，之后可以直接将dist下的静态资源进行上传服务器上线
 
-命令行下输入
+命令行输入
 
 ```shell
 yarn build
 ```
 
 ## 协议
+
 MIT
